@@ -373,7 +373,11 @@ static void TaskWatchdog(void* pvParameters) {
 // ============================================================
 void setup() {
     Serial.begin(115200);
-    delay(1000);
+    
+    // --- AÑADE ESTO ---
+    while(!Serial) { delay(10); } // Espera a que el monitor serie esté conectado
+    delay(1000);                  // Un respiro extra para el simulador
+    // ------------------
 
     Serial.println("\n========================================");
     Serial.println("  Estacion Meteorologica IoT");
